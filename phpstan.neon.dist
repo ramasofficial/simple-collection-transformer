@@ -1,0 +1,11 @@
+parameters:
+  paths:
+    - src
+    - tests
+
+  level: 5
+
+  excludePaths:
+    - ./*/vendor/*
+
+  checkMissingIterableValueType: false
