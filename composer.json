@@ -1,7 +1,7 @@
 {
     "name": "ramasdev/simple-collection-transformer",
     "description": "Simple data to Laravel collection transformer.",
-    "version": "0.1.0",
+    "version": "0.2.0",
     "type": "library",
     "license": "MIT",
     "autoload": {
@@ -20,6 +20,8 @@
             "email": "ramas.developer@gmail.com"
         }
     ],
+    "minimum-stability": "dev",
+    "prefer-stable": true,
     "require": {
         "php": "^8.0"
     },
@@ -28,6 +30,9 @@
         "orchestra/testbench": "^7.7",
         "phpstan/phpstan": "^1.8",
         "squizlabs/php_codesniffer": "^3.7"
+    },
+    "config": {
+        "sort-packages": true
     },
     "scripts": {
         "phpcs": "./vendor/bin/phpcs --standard=phpcs.xml.dist",
