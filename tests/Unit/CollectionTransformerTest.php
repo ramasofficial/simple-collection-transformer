@@ -29,7 +29,7 @@ class CollectionTransformerTest extends TestCase
      */
     public function testTransformerBuildCollectionProperly(array $data): void
     {
-        $actualCollection = $this->collectionTransformer->transform($data, Channel::class, function ($item) {
+        $actualCollection = $this->collectionTransformer->transform($data, function ($item) {
             return new Channel($item['channel_id'], $item['channel_type'], new Carbon($item['last_registration']));
         });
 
@@ -43,7 +43,7 @@ class CollectionTransformerTest extends TestCase
      */
     public function testTransformerBuildCollectionWithConditionsProperly(array $data, int $conditionalCount): void
     {
-        $actualCollection = $this->collectionTransformer->transform($data, Channel::class, function ($item) {
+        $actualCollection = $this->collectionTransformer->transform($data, function ($item) {
             if ($item['channel_id'] === 'b') {
                 return false;
             }

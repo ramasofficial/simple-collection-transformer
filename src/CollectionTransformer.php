@@ -6,6 +6,7 @@ namespace Ramasdev\SimpleCollectionTransformer;
 
 use Illuminate\Support\Collection;
 use Ramasdev\SimpleCollectionTransformer\Attributes\CollectionAttribute;
+use Ramasdev\SimpleCollectionTransformer\Exceptions\ArrayNotFoundException;
 use Ramasdev\SimpleCollectionTransformer\Exceptions\CannotFindAttributeException;
 use ReflectionClass;
 use ReflectionException;
@@ -15,8 +16,9 @@ class CollectionTransformer
     /**
      * @throws ReflectionException
      */
-    public function transform(array $data, string $class, callable $callable): Collection
+    public function transform(array $data, callable $callable): Collection
     {
+        $class = $this->getTransformClass($data, $callable);
         $collectionClass = $this->scanClass($class);
 
         if (!$collectionClass) {
@@ -51,5 +53,14 @@ class CollectionTransformer
         }
 
         return null;
+    }
+
+    private function getTransformClass(array $data, callable $callable): string
+    {
+        if (!is_array($data[0])) {
+            throw new ArrayNotFoundException('Array should consist of array!');
+        }
+
+        return $callable($data[0])::class;
     }
 }

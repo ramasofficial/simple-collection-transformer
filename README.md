@@ -48,7 +48,7 @@ Transform to collection with filters:
 ```php
 use Ramasdev\SimpleCollectionTransformer\CollectionTransformer;
 
-$actualCollection = $this->collectionTransformer->transform($data, Channel::class, function ($item) {
+$actualCollection = $this->collectionTransformer->transform($data, function ($item) {
     if ($item['channel_id'] === 'b') {
         return false;
     }
@@ -61,7 +61,7 @@ You can utilize it with you deserializer component also, for example:
 ```php
 use Ramasdev\SimpleCollectionTransformer\CollectionTransformer;
 
-$actualCollection = $this->collectionTransformer->transform($data, Channel::class, function ($item) {
+$actualCollection = $this->collectionTransformer->transform($data, function ($item) {
     return $this->decoder->decodeArray((array) $item, Channel::class);
 }); // Returns ChannelCollection
 ```
