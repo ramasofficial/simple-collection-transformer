@@ -1,11 +1,17 @@
+rules:
+    - Ergebnis\PHPStan\Rules\Files\DeclareStrictTypesRule
+    - Ergebnis\PHPStan\Rules\Expressions\NoIssetRule
+    - Ergebnis\PHPStan\Rules\Expressions\NoEmptyRule
+
 parameters:
   paths:
     - src
     - tests
 
-  level: 5
+  level: 6
 
   excludePaths:
     - ./*/vendor/*
 
   checkMissingIterableValueType: false
+  checkGenericClassInNonGenericObjectType: false
