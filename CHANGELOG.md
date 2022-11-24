@@ -16,3 +16,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ## [1.0.0] - 2022-09-05
 
 - Automatically searches the class from which need to take an attribute. You don't need anymore to pass a class as a second argument, transformer will execute search automatically.
+
+## [1.0.1] - 2022-11-24
+
+- Increase phpstan level and ensure better code quality.
